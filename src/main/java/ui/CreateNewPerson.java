@@ -318,7 +318,7 @@ public class CreateNewPerson extends javax.swing.JPanel {
         txtGender.setText("");
         txtHouse.setText("");
 
-
+           displayPerson();
     }//GEN-LAST:event_btnCreatePersonActionPerformed
 
     private void txtGenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGenderActionPerformed
