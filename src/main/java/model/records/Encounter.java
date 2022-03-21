@@ -4,6 +4,8 @@
  */
 package model.records;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import model.patient.Patient;
 
 /**
@@ -13,7 +15,7 @@ import model.patient.Patient;
 public class Encounter {
     
     VitalSigns vitalSigns;
-    int date;
+    Date date;
     EncounterHistory encounterHistory;
 
     
@@ -25,19 +27,13 @@ public class Encounter {
 //        
 //    }
 
-    public Encounter(VitalSigns vitalSigns) {
+    public Encounter(Date date, VitalSigns vitalSigns) {
+        this.date = date;
         this.vitalSigns = vitalSigns;
         
     }
 
-    public Encounter(VitalSigns vitalSigns, int date) {
-        this.vitalSigns = vitalSigns;
-        this.date = date;
-    }
-    
-    
-
-   
+ 
 
     public VitalSigns getVitalSigns() {
         return vitalSigns;
@@ -47,11 +43,11 @@ public class Encounter {
         this.vitalSigns = vitalSigns;
     }
 
-    public int getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(int date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

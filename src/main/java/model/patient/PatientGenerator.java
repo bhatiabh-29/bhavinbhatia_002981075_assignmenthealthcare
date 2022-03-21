@@ -6,7 +6,10 @@
 
     import model.patient.Patient;
     import java.util.ArrayList;
+import java.util.Date;
     import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.TimeUnit;
 import model.location.City;
 import model.location.Community;
 import model.location.House;
@@ -214,7 +217,13 @@ public class PatientGenerator {
     
     public Encounter getRandomEncounter() {
         VitalSigns vitalSigns = this.getRandomVitalSigns();
-        Encounter encounter = new Encounter(vitalSigns);
+         long today = new Date().getTime();
+        long aDay = TimeUnit.DAYS.toMillis(1);
+        Date startDate = new Date(today - aDay * 365 * 2);
+        Date endDate = new Date(today + aDay * 365 * 2);
+        Date randomDate = this.between(startDate, 
+               endDate);
+        Encounter encounter = new Encounter(randomDate, vitalSigns);
         return encounter;
     }
     
@@ -230,6 +239,17 @@ public class PatientGenerator {
         return null;
     }
     
+     public static Date between(Date startInclusive, Date endExclusive) {
+        
+            // Taken from : https://www.baeldung.com/java-random-dates
+        long startMillis = startInclusive.getTime();
+        long endMillis = endExclusive.getTime();
+        long randomMillisSinceEpoch = ThreadLocalRandom
+          .current()
+          .nextLong(startMillis, endMillis);
+
+        return new Date(randomMillisSinceEpoch);
+    }
 }
     
 

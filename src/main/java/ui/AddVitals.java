@@ -4,6 +4,7 @@
  */
 package ui;
 
+import java.util.Date;
 import javax.swing.JOptionPane;
 import model.patient.Patient;
 import model.patient.PatientDirectory;
@@ -34,14 +35,14 @@ public class AddVitals extends javax.swing.JPanel {
         initComponents();
         this.patientDirectory = patientDirectory;
       
-        
-        txtPatientId.setText("123");
-        txtpulse.setText("90");
-        txtBloodPressure.setText("100");
-        txtAlergies.setText("temp allergies");
-        txtMedication.setText("temp medication");
-        txtTemp.setText("12");
-        txtSymptoms.setText("temp sympotms");
+//        
+//        txtPatientId.setText("123");
+//        txtpulse.setText("90");
+//        txtBloodPressure.setText("100");
+//        txtAlergies.setText("temp allergies");
+//        txtMedication.setText("temp medication");
+//        txtTemp.setText("12");
+//        txtSymptoms.setText("temp sympotms");
         
     }
 
@@ -217,7 +218,9 @@ public class AddVitals extends javax.swing.JPanel {
         
         VitalSigns newVitalSigns = new VitalSigns(pulseRate,temp,
                 bloodPressure,symptoms, allergies, medication); 
-        Encounter encounter =new Encounter(newVitalSigns, 2022);
+            Date date = new Date();  
+
+        Encounter encounter =new Encounter(date, newVitalSigns);
        
         patient.getEncounterHistory().addNewEncounter(encounter);
         
